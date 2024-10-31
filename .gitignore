@@ -1,0 +1,49 @@
+# Visual Studio files
+.vs/
+*.suo
+*.user
+*.userprefs
+*.sln.docstates
+
+# Build results
+[Bb]in/
+[Oo]bj/
+*.dll
+*.exe
+*.pdb
+*.appx
+*.appxbundle
+*.appxupload
+*.msix
+*.msixbundle
+
+# NuGet packages
+*.nupkg
+*.snupkg
+*.symbols.nupkg
+**/packages/*
+!**/packages/build/
+!**/packages/build/**/lib/netstandard2.0/*.dll
+
+# Logs
+*.log
+
+# User-specific files
+*.vscode/
+*.sln.ide
+*.sln.*
+*.dbmdl
+*.dbproj.schemaview
+*.jfm
+
+# Other files to ignore
+*.db
+*.mdb
+*.sql
+*.bak
+*.cache
+*.vspscc
+*.vssscc
+
+# Ignore directories for Node.js
+node_modules/

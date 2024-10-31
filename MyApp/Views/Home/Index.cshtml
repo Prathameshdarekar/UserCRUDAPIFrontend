@@ -1,0 +1,66 @@
+﻿@model List<MyApp.Models.User>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>User Management</h2>
+
+        <!-- Add User Form -->
+        <form action="/Home/AddUser" method="post" class="mb-3">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" name="Name" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" name="Email" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-success">Add User</button>
+        </form>
+
+        <!-- User List Table -->
+        <table class="table table-bordered mt-3">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model)
+                {
+                    <tr>
+                        <td>@user.Id</td>
+                        <td>@user.Name</td>
+                        <td>@user.Email</td>
+                        <td>
+                            <!-- Update User Form (inline) -->
+                            <form action="/Home/UpdateUser" method="post" style="display:inline;">
+                                <input type="hidden" name="Id" value="@user.Id">
+                                <input type="text" name="Name" value="@user.Name" required class="form-control-sm">
+                                <input type="email" name="Email" value="@user.Email" required class="form-control-sm">
+                                <button type="submit" class="btn btn-info">Update</button>
+                            </form>
+
+                            <!-- Delete User Form -->
+                            <form action="/Home/DeleteUser" method="post" style="display:inline;">
+                                <input type="hidden" name="id" value="@user.Id">
+                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this user?');">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
